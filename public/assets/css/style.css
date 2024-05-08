@@ -1,0 +1,745 @@
+body {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+}
+
+main {
+  position: relative;
+  z-index: 10;
+  background-color: #fff;
+  height: 100%;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.form-control {
+  background-color: #fff;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.07);
+  box-shadow: none;
+  border: 0;
+  outline: 0;
+  height: 50px;
+  padding: 6px 12px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #005c4a;
+  font-weight: 400;
+  outline: none;
+}
+.form-control::placeholder {
+  color: #fff;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.form-control[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  opacity: 0;
+  cursor: pointer;
+}
+.form-control[type=number]::-webkit-inner-spin-button, .form-control[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.form-control:focus {
+  color: #fff;
+  background-color: #005c4a;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.07);
+}
+.form-control[type=radio], .form-control[type=checkbox] {
+  display: none;
+}
+.form-control[type=radio] ~ label, .form-control[type=checkbox] ~ label {
+  padding-left: 30px;
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 500;
+  position: relative;
+  color: #005c4a;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+}
+.form-control[type=radio] ~ label::after, .form-control[type=checkbox] ~ label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #005c4a;
+  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.07);
+  height: 20px;
+  width: 20px;
+  z-index: 1;
+}
+.form-control[type=radio] ~ label::before, .form-control[type=checkbox] ~ label::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 30px;
+  text-align: center;
+  z-index: 10;
+  font-size: 15px;
+  opacity: 0;
+  transition: all ease-in-out 0.3s;
+}
+.form-control[type=radio]:checked ~ label, .form-control[type=checkbox]:checked ~ label {
+  color: #005c4a;
+}
+.form-control[type=radio]:checked ~ label::before, .form-control[type=checkbox]:checked ~ label::before {
+  opacity: 1;
+}
+
+.header {
+  position: sticky;
+  z-index: 9999;
+  top: 0;
+  background-color: #fff;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.07);
+  padding: 15px 0;
+}
+.header .header-scroll .navbar .navbar-nav .nav-item {
+  padding: 0 10px;
+}
+.header .header-scroll .navbar .navbar-nav .nav-item .nav-link {
+  color: #c39a6c;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  transition: all ease-in-out 0.3s;
+  padding: 8px 0;
+  border: 0;
+  position: relative;
+  text-transform: capitalize;
+}
+.header .header-scroll .navbar .navbar-nav .nav-item .nav-link::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  height: 1px;
+  width: 0;
+  transition: all ease-in-out 0.3s;
+  background-color: #c39a6c;
+}
+.header .header-scroll .navbar .navbar-nav .nav-item .nav-link.active::before, .header .header-scroll .navbar .navbar-nav .nav-item .nav-link:hover::before {
+  width: 100%;
+}
+.header .header-scroll .navbar .navbar-nav .nav-item.dropdown .dropdown-toggle {
+  background: none;
+}
+.header .header-scroll .navbar .navbar-nav .nav-item.dropdown .dropdown-toggle::before {
+  display: none;
+}
+.header .header-scroll .navbar .navbar-nav .nav-item.dropdown .dropdown-menu {
+  padding: 12px;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.07);
+  left: -20%;
+}
+.header .header-scroll .navbar .navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+  background: none;
+}
+.header.header-mob {
+  left: 0;
+  width: 100%;
+  transition: all ease-in-out 0.3s;
+  z-index: 999;
+  padding: 10px 0 15px;
+  display: none;
+}
+.header.header-mob .header-overlay .header-scroll-content {
+  align-items: center;
+  justify-content: space-between;
+}
+.header.header-mob .header-overlay .header-scroll-content .icons-header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+.header.header-mob .header-overlay .header-scroll-content .icons-header .btn-logout {
+  cursor: pointer;
+  color: #c39a6c;
+  font-size: 25px;
+}
+.header.header-mob .header-overlay .header-scroll-content .icon-menu {
+  cursor: pointer;
+  color: #c39a6c;
+  font-size: 25px;
+}
+.header.header-mob .header-mob-content {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  left: 0;
+  width: 100%;
+  z-index: 99999999;
+  overflow: hidden;
+  transition: all ease-in-out 0.3s;
+}
+.header.header-mob .header-mob-content .header-mob-content-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  transition: all ease-in-out 0.3s;
+  transition-delay: 0s;
+}
+.header.header-mob .header-mob-content .menu-content {
+  background-color: #fff;
+  width: 320px;
+  height: 100%;
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 50px 25px;
+  overflow: hidden;
+  overflow-y: auto;
+  transition: all ease-in-out 0.3s;
+  transition-delay: 0.4s;
+}
+.header.header-mob .header-mob-content .menu-content .logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 50px;
+}
+.header.header-mob .header-mob-content .menu-content .logo img {
+  max-width: 180px;
+}
+.header.header-mob .header-mob-content .menu-content .logo .close-menu {
+  margin-left: auto;
+  color: #c39a6c;
+  font-size: 25px;
+  padding: 10px;
+  border: 1px solid #c39a6c;
+  border-radius: 6px;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header.header-mob .header-mob-content .menu-content .menu-list .navbar-nav {
+  margin-bottom: 30px;
+}
+.header.header-mob .header-mob-content .menu-content .menu-list .navbar-nav .nav-item {
+  padding: 0 15px;
+}
+.header.header-mob .header-mob-content .menu-content .menu-list .navbar-nav .nav-item .nav-link {
+  color: #c39a6c;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  transition: all ease-in-out 0.3s;
+  padding: 8px 0;
+}
+.header.header-mob .header-mob-content .menu-content .menu-list .navbar-nav .nav-item .nav-link.active, .header.header-mob .header-mob-content .menu-content .menu-list .navbar-nav .nav-item .nav-link:hover {
+  border-bottom: 1px solid #c39a6c;
+}
+.header.header-mob .header-mob-content .menu-content .menu-list .navbar-nav .nav-item.dropdown .dropdown-toggle {
+  border: 0;
+  background: none;
+}
+.header.header-mob .header-mob-content .menu-content .menu-list .navbar-nav .nav-item.dropdown .dropdown-toggle::before {
+  display: none;
+}
+.header.header-mob .header-mob-content .menu-content .menu-list .navbar-nav .nav-item.dropdown .dropdown-menu {
+  padding: 12px;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.07);
+}
+.header.header-mob .header-mob-content .menu-content .menu-list .navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+  background: none;
+}
+.header.header-mob .header-mob-content.active {
+  left: -100%;
+}
+.header.header-mob .header-mob-content.active .header-mob-content-overlay {
+  right: -100%;
+  transition-delay: 0.4s;
+}
+.header.header-mob .header-mob-content.active .menu-content {
+  left: -100%;
+  transition-delay: 0s;
+}
+
+.logo img {
+  width: 200px;
+}
+
+.slider {
+  height: calc(100vh - 95px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 0;
+}
+.footer .overlay-footer {
+  background-color: #005c4a;
+  padding: 24px 0;
+}
+.footer .overlay-footer .foot-copyright p {
+  color: #c39a6c;
+  margin: 0;
+  font-weight: 600;
+}
+
+.head-section {
+  margin-bottom: 30px;
+}
+.head-section h4 {
+  font-size: 25px;
+  font-weight: 700;
+  color: #c39a6c;
+  text-align: start;
+  line-height: 45px;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}
+.head-section h4 span {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 38px;
+}
+.head-section h4.head-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.head-section p {
+  color: #c39a6c;
+}
+.head-section p a {
+  color: #005c4a;
+  font-weight: 700;
+}
+
+.btn {
+  background-color: #005c4a;
+  color: #fff;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.07);
+  border: 0;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 5px;
+  transition: all ease-in-out 0.3s;
+  min-height: 50px;
+  width: 200px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+  font-size: 18px;
+  transition: none;
+}
+.btn span {
+  position: relative;
+  z-index: 10;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #c39a6c;
+  z-index: 1;
+  transition: none;
+}
+.btn:hover {
+  color: #fff;
+  transition: all ease-in-out 0.3s;
+}
+.btn:hover::after {
+  width: 100%;
+  transition: all ease-in-out 0.3s;
+}
+.btn.mainBtn {
+  margin-bottom: 0;
+}
+.btn.mainBtn::after {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  top: 105%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.btn.mainBtn:hover::after {
+  top: -100%;
+}
+
+.login {
+  padding: 40px 0;
+  background-color: #fff;
+}
+.login form .form-group {
+  margin-bottom: 10px;
+  position: relative;
+}
+.login form .form-group label {
+  font-size: 14px;
+}
+.login form .form-group .form-control {
+  min-height: 50px;
+  font-size: 14px;
+  border: 0;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.07);
+  background-color: #fff;
+  color: #005c4a;
+}
+.login form .form-group .form-control::placeholder {
+  font-size: 14px;
+  color: #005c4a;
+}
+.login form .form-group .form-control:focus {
+  outline: 0;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.07);
+}
+.login form .form-group .form-control::-webkit-outer-spin-button, .login form .form-group .form-control::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.login form .form-group .form-control[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  opacity: 0;
+  cursor: pointer;
+}
+.login form .form-group .upload_file {
+  height: 50px;
+  margin-bottom: 20px;
+  color: #005c4a;
+  font-size: 17px;
+  font-weight: 500;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  border-radius: 6px;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.messages {
+  padding: 40px 0;
+  background-color: #F9F9F9;
+}
+.messages .overlay-table {
+  overflow: hidden;
+  overflow-x: auto;
+}
+.messages .overlay-table .table {
+  vertical-align: middle;
+  min-width: 1000px;
+  max-width: 1300px;
+  width: 100%;
+}
+.messages .overlay-table .table th.accepted {
+  color: #198754;
+}
+.messages .overlay-table .table th.refused {
+  color: #dc3545;
+}
+.messages .overlay-table .table th.pending {
+  color: #005c4a;
+}
+.messages .overlay-table .table .user-span {
+  color: #198754;
+  font-weight: 700;
+  font-size: 20px;
+}
+.messages .overlay-table .table .owner-span {
+  color: #dc3545;
+  font-weight: 700;
+  font-size: 20px;
+}
+.messages .overlay-table .table .btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.messages .overlay-table .table .btns .rate {
+  position: relative;
+}
+.messages .overlay-table .table .btns .rate input {
+  height: 50px;
+  padding: 6px 6px 6px 50px;
+  border-radius: 6px;
+  border: 1px solid #005c4a;
+  font-size: 16px;
+  line-height: 38px;
+  font-weight: 700;
+}
+.messages .overlay-table .table .btns .rate input::placeholder {
+  font-size: 14px;
+  font-weight: 700;
+}
+.messages .overlay-table .table .btns .rate .btn {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+  height: 38px;
+  width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 38px;
+}
+.messages .overlay-table .table .btn {
+  box-shadow: none;
+  display: inline-block;
+  width: auto;
+  color: #fff;
+  height: auto;
+  padding: 5px 15px;
+  min-height: auto;
+  text-transform: capitalize;
+  margin-bottom: 0;
+  background-color: #005c4a;
+}
+.messages .overlay-table .table .btn::after {
+  display: none;
+}
+.messages .overlay-table .table .btn:hover {
+  color: #005c4a;
+  background-color: #fff;
+}
+.messages .overlay-table .table .btn.accept {
+  background-color: #198754;
+}
+.messages .overlay-table .table .btn.accept:hover {
+  color: #198754;
+  background-color: #fff;
+}
+.messages .overlay-table .table .btn.refuse {
+  background-color: #dc3545;
+}
+.messages .overlay-table .table .btn.refuse:hover {
+  color: #dc3545;
+  background-color: #fff;
+}
+
+.quest {
+  background-color: #005c4a;
+  border-radius: 10px;
+  padding: 24px;
+}
+.quest .form-group .form-control {
+  background-color: #c39a6c;
+}
+.quest .form-group .form-control[type=radio], .quest .form-group .form-control[type=checkbox] {
+  display: none;
+}
+.quest .form-group .form-control[type=radio] ~ label, .quest .form-group .form-control[type=checkbox] ~ label {
+  color: #c39a6c;
+}
+.quest .form-group .form-control[type=radio] ~ label::after, .quest .form-group .form-control[type=checkbox] ~ label::after {
+  background-color: #c39a6c;
+}
+.quest .form-group .form-control[type=radio]:checked ~ label, .quest .form-group .form-control[type=checkbox]:checked ~ label {
+  color: #c39a6c;
+}
+.quest .form-group.checkboxes-group {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.quest .form-group.checkboxes-group .checkboxes-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 30px;
+  flex-wrap: wrap;
+}
+
+.register-login {
+  padding: 24px 0 0;
+}
+.register-login .register-login-overlay .head-section p {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+}
+.register-login .register-login-overlay form {
+  margin: 24px 0;
+  row-gap: 24px;
+}
+.register-login .register-login-overlay form .form-group {
+  position: relative;
+}
+.register-login .register-login-overlay form .form-group textarea.form-control {
+  min-height: 250px;
+  resize: none;
+  padding: 12px 18px;
+}
+.register-login .register-login-overlay form .form-group .btn {
+  display: block;
+  margin: 0 auto;
+  min-width: 200px;
+  background-color: #005c4a;
+  color: #fff;
+  transition: all ease-in-out 0.3s;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.07);
+  min-height: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  border: 0;
+}
+.register-login .register-login-overlay form .form-group .btn:hover {
+  background-color: #fff;
+  color: #005c4a;
+}
+.register-login .register-login-overlay form .form-group .upload_file {
+  height: 50px;
+  margin-bottom: 0;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  border-radius: 6px;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.register-login .register-login-overlay form .form-group.checkboxes-group {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.register-login .register-login-overlay form .form-group.checkboxes-group .checkboxes-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 30px;
+  flex-wrap: wrap;
+}
+
+.table th, .table td {
+  text-align: center;
+  vertical-align: middle;
+}
+.table .main-tr {
+  background-color: #005c4a;
+  color: #fff;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #005c4a;
+}
+
+@media (max-width: 1400px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+@media (max-width: 991px) {
+  .header {
+    display: none;
+  }
+  .header.header-mob {
+    display: block;
+  }
+}
+@media (max-width: 575px) {
+  .slider {
+    height: calc(100vh - 65px);
+  }
+  .head-section h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+    line-height: 25px;
+  }
+  .logo img {
+    width: 100px;
+  }
+}
+.table > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-accent-bg: var(--bs-table-striped-bg);
+  color: var(--bs-table-striped-color);
+}
+
+/*# sourceMappingURL=style.css.map */

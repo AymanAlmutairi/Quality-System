@@ -1,0 +1,809 @@
+$mainColor: #005c4a;
+$secondColor:#848684;
+$thirdColor:#c39a6c;//c39a6c
+$forthColor:#E9E9E9;
+$whiteColor:#fff;
+$blackColor:#000;
+$offWhiteColor:#F9F9F9;
+$trans: all ease-in-out .3s;
+$boxShadWhite: 0 0 20px 5px rgba(255,255,255,.07);
+$boxShadBlack: 0 0 20px 5px rgba(0,0,0,.07);
+body{
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+}
+main{
+    position: relative;
+    z-index: 10;
+    background-color: #fff;
+    height: 100%;
+}
+a{
+    text-decoration: none!important;
+}
+
+.form-control{
+    background-color: $whiteColor;
+    box-shadow: $boxShadBlack;
+    box-shadow: none;
+    border: 0;
+    outline: 0;
+    height: 50px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    color: $whiteColor;
+    background-color: $mainColor;
+    font-weight: 400;
+    outline: none;
+    &::placeholder{
+        color: $whiteColor;
+        font-weight: 400;
+        text-transform: capitalize;
+    }
+    &[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        opacity: 0;
+        cursor: pointer;
+    }
+    &[type=number]{
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button{
+            -webkit-appearance: none;
+        }
+    }
+    &:focus{
+        color: $whiteColor;
+        background-color: $mainColor;
+        box-shadow: $boxShadBlack;
+    }
+    &[type=radio],&[type=checkbox]{
+        display: none;
+        & ~ label{
+            padding-left: 30px;
+            font-size: 18px;
+            text-transform: capitalize;
+            font-weight: 500;
+            position: relative;
+            color: $mainColor;
+            cursor: pointer;
+            transition: $trans;
+            &::after{
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: $mainColor;
+                box-shadow: $boxShadWhite;
+                height: 20px;
+                width: 20px;
+                z-index: 1;
+            }
+            &::before{
+                content: "\f00c";
+                font-family:"Font Awesome 6 Free";
+                font-weight: 900;
+                color: $whiteColor;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: transparent;
+                height: 20px;
+                width: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                line-height: 30px;
+                text-align: center;
+                z-index: 10;
+                font-size: 15px;
+                opacity: 0;
+                transition: $trans;
+            }
+        }
+        &:checked{
+            & ~ label{
+                color: $mainColor;
+                &::before{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.header{
+    position: sticky;
+    z-index: 9999;
+    top: 0;
+    background-color: $whiteColor;
+    box-shadow: $boxShadBlack;
+    padding: 15px 0;
+    .header-scroll{
+        .navbar{
+            .navbar-nav{
+                .nav-item{
+                    padding: 0 10px;
+                    .nav-link{
+                        color: $thirdColor;
+                        font-size: 16px;
+                        font-weight: 700;
+                        line-height: 24px;
+                        transition: $trans;
+                        padding: 8px 0;
+                        border: 0;
+                        position: relative;
+                        text-transform: capitalize;
+                        &::before{
+                            content: '';
+                            position: absolute;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            top: 100%;
+                            height: 1px;
+                            width: 0;
+                            transition: $trans;
+                            background-color: $thirdColor;
+                        }
+                        &.active,&:hover{
+                            &::before{
+                                width: 100%;
+                            }
+                        }
+                    }
+                    &.dropdown{
+                        .dropdown-toggle{
+                            background: none;
+                            &::before{
+                                display: none;
+                            }
+                        }
+                        .dropdown-menu{
+                            padding: 12px;
+                            border: 0;
+                            border-radius: 5px;
+                            box-shadow: $boxShadBlack;
+                            left: -20%;
+                            .dropdown-item{
+                                &:hover{
+                                    background: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.header-mob{
+        left: 0;
+        width: 100%;
+        transition: $trans;
+        z-index: 999;
+        padding: 10px 0 15px;
+        display: none;
+        .header-overlay{
+            .header-scroll-content{
+                align-items: center;
+                justify-content: space-between;
+                .icons-header{
+                    display: flex;
+                    gap: 15px;
+                    align-items: center;
+                    justify-content: space-between;
+                    .btn-logout{
+                        cursor: pointer;
+                        color: $thirdColor;
+                        font-size: 25px;
+                    }
+                }
+                .icon-menu{
+                    cursor: pointer;
+                    color: $thirdColor;
+                    font-size: 25px;
+                }
+            }
+        }
+        .header-mob-content{
+            position: fixed;
+            top: 0;
+            height: 100vh;
+            left: 0;
+            width: 100%;
+            z-index: 99999999;
+            overflow: hidden;
+            transition: $trans;
+            .header-mob-content-overlay{
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                right: 0;
+                background-color: rgba(0,0,0,.7);
+                z-index: 1;
+                transition: $trans;
+                transition-delay: 0s;
+            }
+            .menu-content{
+                background-color: $whiteColor;
+                width: 320px;
+                height: 100%;
+                z-index: 99;
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 50px 25px;
+                overflow: hidden;
+                overflow-y: auto;
+                transition: $trans;
+                transition-delay: 0.4s;
+                .logo{
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    margin-bottom: 50px;
+                    img{
+                        max-width: 180px;
+                    }
+                    .close-menu{
+                        margin-left: auto;
+                        color: $thirdColor;
+                        font-size: 25px;
+                        padding: 10px;
+                        border: 1px solid $thirdColor;
+                        border-radius: 6px;
+                        height: 40px;
+                        width: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+                .menu-list{
+                    .navbar-nav{
+                        margin-bottom: 30px;
+                        .nav-item{
+                            padding: 0 15px;
+                            .nav-link{
+                                color: $thirdColor;
+                                font-size: 16px;
+                                font-weight: 500;
+                                line-height: 24px;
+                                transition: $trans;
+                                padding: 8px 0;
+                                &.active,&:hover{
+                                    border-bottom: 1px solid $thirdColor; 
+                                }
+                            }
+                            &.dropdown{
+                                .dropdown-toggle{
+                                    border: 0;
+                                    background: none;
+                                    &::before{
+                                        display: none;
+                                    }
+                                }
+                                .dropdown-menu{
+                                    padding: 12px;
+                                    border: 0;
+                                    border-radius: 5px;
+                                    box-shadow: $boxShadBlack;
+                                    .dropdown-item{
+                                        &:hover{
+                                            background: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.active{
+                left: -100%;
+                .header-mob-content-overlay{
+                    right: -100%;
+                    transition-delay: .4s;
+                }
+                .menu-content{
+                    left: -100%;
+                    transition-delay: 0s;
+                }
+            }
+        }
+    }
+}
+.logo{
+    img{
+        width: 200px;
+    }
+}
+.slider{
+    height: calc(100vh - 95px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 0;
+    .overlay-footer{
+        background-color: $mainColor;
+        padding: 24px 0;
+        .foot-copyright{
+            p{
+                color: $thirdColor;
+                margin: 0;
+                font-weight: 600;
+            }
+        }
+    }
+}
+.head-section{
+    margin-bottom: 30px;
+    h4{
+        font-size: 25px;
+        font-weight: 700;
+        color: $thirdColor;
+        text-align: start;
+        line-height: 45px;
+        margin-bottom: 15px;
+        text-transform: capitalize;
+        span{
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 38px;
+        }
+        &.head-section-title{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    p{
+        color: $thirdColor;
+        a{
+            color: $mainColor;
+            font-weight: 700;
+        }
+    }
+}
+.btn{
+    background-color: $mainColor;
+    color: $whiteColor;
+    box-shadow: $boxShadBlack;
+    border: 0;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: $trans;
+    min-height: 50px;
+    width: 200px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    font-size: 18px;
+    transition: none;
+    span{
+        position: relative;
+        z-index: 10;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: $thirdColor;
+        z-index: 1;
+        transition: none;
+    }
+    &:hover{
+        color: $whiteColor;
+        transition: $trans;
+        &::after{
+            width: 100%;
+            transition: $trans;
+        }
+    }
+    &.mainBtn{
+        margin-bottom: 0;
+        &::after{
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            top: 105%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &:hover{
+            &::after{
+                top: -100%;
+            }
+        }
+    }
+}
+// ===================================== Login && Register Page
+.login{
+    padding: 40px 0;
+    background-color: $whiteColor;
+    form{
+        .form-group{
+            margin-bottom: 10px;
+            position: relative;
+            label{
+                font-size: 14px;
+            }
+            .form-control{
+                min-height: 50px;
+                font-size: 14px;
+                border: 0;
+                box-shadow: $boxShadBlack;
+                background-color: $whiteColor;
+                color: $mainColor;
+                &::placeholder{
+                    font-size: 14px;
+                    color: $mainColor;
+                }
+                &:focus{
+                    outline: 0;
+                    box-shadow: $boxShadBlack;
+                }
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button{
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+                &[type=file]{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 9;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+            }
+            .upload_file{
+                height: 50px;
+                margin-bottom: 20px;
+                color: $mainColor;
+                font-size: 17px;
+                font-weight: 500;
+                padding-top: 0;
+                padding-bottom: 0;
+                cursor: pointer;
+                border-radius: 6px;
+                position: relative;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+        }
+    }
+}
+// ==================================== Messages Page
+.messages{
+    padding: 40px 0;
+    background-color: $offWhiteColor;
+    .overlay-table{
+        overflow: hidden;
+        overflow-x: auto;
+        .table{
+            vertical-align: middle;
+            min-width: 1000px;
+            max-width: 1300px;
+            width: 100%;
+            th{
+                &.accepted{
+                    color:#198754;
+                }
+                &.refused{
+                    color:#dc3545;
+                }
+                &.pending{
+                    color:$mainColor;
+                }
+            }
+            .user-span{
+                color: #198754;
+                font-weight: 700;
+                font-size: 20px;
+            }
+            .owner-span{
+                color: #dc3545;
+                font-weight: 700;
+                font-size: 20px;
+            }
+            .btns{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                .rate{
+                    position: relative;
+                    input{
+                        height: 50px;
+                        padding: 6px 6px 6px 50px;
+                        border-radius: 6px;
+                        border: 1px solid $mainColor;
+                        font-size: 16px;
+                        line-height: 38px;
+                        font-weight: 700;
+                        &::placeholder{
+                            font-size: 14px;
+                            font-weight: 700;
+                        }
+                    }
+                    .btn{
+                        position: absolute;
+                        top: 50%;
+                        left: 6px;
+                        transform: translateY(-50%);
+                        height: 38px;
+                        width: 38px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 0;
+                        line-height: 38px;
+                    }
+                }
+            }
+            .btn{
+                box-shadow: none;
+                display: inline-block;
+                width: auto;
+                color: $whiteColor;
+                height: auto;
+                padding: 5px 15px;
+                min-height: auto;
+                text-transform: capitalize;
+                margin-bottom: 0;
+                background-color: $mainColor;
+                &::after{
+                    display: none;
+                }
+                &:hover{
+                    color: $mainColor;
+                    background-color: $whiteColor;
+                }
+                &.accept{
+                    background-color: #198754;
+                    &:hover{
+                        color: #198754;
+                        background-color: $whiteColor;
+                    }
+                }
+                &.refuse{
+                    background-color: #dc3545;
+                    &:hover{
+                        color: #dc3545;
+                        background-color: $whiteColor;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.quest{
+    background-color: $mainColor;
+    border-radius: 10px;
+    padding: 24px;
+    .form-group{
+        .form-control{
+            background-color: $thirdColor;
+            &[type=radio],&[type=checkbox]{
+                display: none;
+                & ~ label{
+                    color: $thirdColor;
+                    &::after{
+                        background-color: $thirdColor;
+                    }
+                }
+                &:checked{
+                    & ~ label{
+                        color: $thirdColor;
+                    }
+                }
+            }
+        }
+        &.checkboxes-group{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            .checkboxes-inputs{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                column-gap: 30px;
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+
+.register-login{
+    padding: 24px 0 0;
+    .register-login-overlay{
+      .head-section{
+        p{
+          max-width: 700px;
+          width: 100%;
+          margin: 0 auto;
+        }
+      }
+      form{
+        margin: 24px 0;
+        row-gap: 24px;
+        .form-group{
+        //   margin-bottom: 24px;
+          position: relative;
+          textarea.form-control{
+            min-height: 250px;
+            resize: none;
+            padding: 12px 18px;
+          }
+          .btn{
+            display: block;
+            margin: 0 auto;
+            min-width: 200px;
+            background-color: $mainColor;
+            color: $whiteColor;
+            transition: $trans;
+            box-shadow: $boxShadBlack;
+            min-height: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            border: 0;
+            &:hover{
+              background-color: $whiteColor;
+              color: $mainColor;
+            }
+          }
+          .upload_file {
+            height: 50px;
+            margin-bottom: 0;
+            color: #fff;
+            font-size: 17px;
+            font-weight: 500;
+            padding-top: 0;
+            padding-bottom: 0;
+            cursor: pointer;
+            border-radius: 6px;
+            position: relative;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+          }
+          &.checkboxes-group{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            .checkboxes-inputs{
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              column-gap: 30px;
+              flex-wrap: wrap;
+            }
+          }
+        }
+      }
+    }
+  }
+
+.table{
+    th,td{
+        text-align: center;
+        vertical-align: middle;
+    }
+    .main-tr{
+        background-color: $mainColor;
+        color: $whiteColor;
+    }
+}
+
+
+
+
+
+
+  
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  
+  
+  #prevBtn {
+    background-color: #bbbbbb;
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: $mainColor;
+  }
+
+@media (max-width: 1400px) {
+    .container{
+        max-width: 1200px;
+    }
+}
+@media (max-width: 991px) {
+    .header{
+        display: none;
+        &.header-mob{
+            display: block;
+        }
+    }
+}
+@media (max-width: 575px) {
+    .slider{
+        height: calc(100vh - 65px);
+    }
+    .head-section{
+        h2{
+            font-size: 25px;
+            margin-bottom: 15px;
+            line-height: 25px;
+        }
+    }
+    .logo{
+        img{
+            width: 100px;
+        }
+    }
+}
+
+
+
+
+.table>tbody>tr:nth-of-type(odd)>*{
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: var(--bs-table-striped-color);
+}
